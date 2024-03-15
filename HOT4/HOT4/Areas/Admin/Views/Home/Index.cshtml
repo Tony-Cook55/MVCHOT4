@@ -1,6 +1,39 @@
 ﻿
+@model HOT4.Models.Appointment
+
 @{
     ViewBag.Title = "Admin Home";
 }
 
 <h1 class="text-center">Admin Home</h1>
+
+<table class="table table-striped table-striped border border-secondary">
+    <thead>
+        <tr>
+            <th>Appointment Date</th>
+            <th>Customer</th>
+            <th>Phone Number</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in ViewBag.Appointments)
+        {
+            <tr>
+                <td>@appointment.AppointmentDate</td>
+                <td>@appointment.Customer.Username</td>
+                <td>@appointment.Customer.PhoneNumber</td>
+
+                <td>
+                    <a asp-area="Admin" asp-controller="Appointment" asp-action="EditAppointment" asp-route-id=@appointment.AppointmentId class="btn btn-warning">Edit Appointment</a>
+                </td>
+                <td>
+                    <a asp-area="Admin" asp-controller="Appointment" asp-action="DeleteAppointment" asp-route-AppointmentId=@appointment.AppointmentId class="btn btn-danger">Delete Appointment</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

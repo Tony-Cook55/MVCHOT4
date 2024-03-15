@@ -7,7 +7,9 @@
 
 
 <div class="text-center">
-    <a asp-controller="Appointment" asp-action="Index" class="btn btn-primary text-decoration-none my-5 p-4">Create An Appointment</a>
+    <a asp-controller="Appointment" asp-action="Index" class="btn btn-primary text-decoration-none my-5 p-4 me-5">Create An Appointment</a>
+
+    <a asp-controller="Customer" asp-action="Index" class="btn btn-primary text-decoration-none my-5 p-4  ms-5">Create New Customer</a>
 </div>
 
 
@@ -18,7 +20,7 @@
         <tr>
             <th>Appointment Date</th>
             <th>Customer</th>
-            <th></th>
+            @* <th>Phone Number</th> *@
         </tr>
     </thead>
     <tbody>
@@ -27,7 +29,7 @@
             <tr>
                 <td>@appointment.AppointmentDate</td>
                 <td>@appointment.Customer.Username</td>
-                <td>@appointment.Customer.PhoneNumber</td>
+@*                 <td>@appointment.Customer.PhoneNumber</td> *@
             </tr>
         }
 

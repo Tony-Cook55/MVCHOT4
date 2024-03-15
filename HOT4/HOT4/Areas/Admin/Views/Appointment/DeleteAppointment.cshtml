@@ -1,0 +1,17 @@
+﻿@model HOT4.Models.Appointment
+
+
+@{
+    ViewBag.Title = "Admin Appointment Delete";
+}
+
+<h1>Are you sure you want to delete current appointment?</h1>
+<form asp-action="DeleteAppointment" asp-method="post">
+
+    <input type="hidden" asp-for="AppointmentId" />
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+
+    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-dark">Cancel</a>
+
+</form>

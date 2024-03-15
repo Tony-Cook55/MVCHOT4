@@ -1,0 +1,62 @@
+﻿@model HOT4.Models.Appointment
+
+@* Calls in the scripts from the file _ValidationScriptsPartial and uses     @await RenderSectionAsync("Scripts", required: false)    from the _Layout *@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+@{
+    ViewData["Title"] = "Edit Appointment";
+}
+
+
+<h1>Edit Appointment</h1>
+
+
+
+
+
+<form asp-area="Admin" asp-controller="Appointment" asp-action="Edit" method="post">
+
+    <div class="row">
+        <div class="row mb-5">
+            <div class="">
+                <label asp-for="AppointmentDate" class="form-label">Date of Appointment</label>
+            </div>
+
+            <div class="">
+                <input asp-for="AppointmentDate" class="form-control" type="datetime-local" placeholder="MM/dd/yyyy hh:00AM/PM" />
+            </div>
+
+            <div class="">
+                <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        @* CUSTOMER *@
+        <div class="mb-5">
+            <label asp-for="CustomerId" class="form-label">Customer</label>
+
+            <!-- Using the asp-items tag helper to dynamically populate the drop down list with genres -->
+            <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.Customers">
+                <option value="">Select Customer</option>
+            </select>
+
+
+            <span class="text-danger" asp-validation-for="CustomerId"></span> @* Error Message *@
+        </div>
+        @* CUSTOMER *@
+    </div>
+
+
+    <input type="hidden" asp-for="AppointmentId"/>
+
+    <button type="submit" class="btn btn-primary">Edit Appointment</button>
+
+    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-dark">Cancel</a>
+
+</form>

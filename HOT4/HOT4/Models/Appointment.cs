@@ -12,7 +12,7 @@ namespace HOT4.Models
 
 
         [Required(ErrorMessage = "Please Add The Appointment's Date")]
-        [Remote(action: "CheckAppointmentDate", controller: "AppointmentValidation")]
+        [Remote(action: "CheckAppointmentDate", controller: "AppointmentValidation", AdditionalFields = "AppointmentId, CustomerId")]
         public DateTime AppointmentDate { get; set; } = DateTime.Today;
 
 
