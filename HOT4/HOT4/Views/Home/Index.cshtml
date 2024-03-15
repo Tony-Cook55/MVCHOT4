@@ -1,0 +1,41 @@
+﻿
+@model Appointment
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <a asp-controller="Appointment" asp-action="Index" class="btn btn-primary text-decoration-none my-5 p-4">Create An Appointment</a>
+</div>
+
+
+
+
+<table class="table table-striped table-striped border border-secondary">
+    <thead>
+        <tr>
+            <th>Appointment Date</th>
+            <th>Customer</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in ViewBag.Appointments)
+        {
+            <tr>
+                <td>@appointment.AppointmentDate</td>
+                <td>@appointment.Customer.Username</td>
+                <td>@appointment.Customer.PhoneNumber</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+
+
+
+

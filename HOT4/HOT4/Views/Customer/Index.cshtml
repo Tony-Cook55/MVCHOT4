@@ -1,0 +1,60 @@
+﻿@model Customer
+
+
+@{
+    ViewData["Title"] = "Create New Customer";
+}
+
+@* Calls in the scripts from the file _ValidationScriptsPartial and uses     @await RenderSectionAsync("Scripts", required: false)    from the _Layout *@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<h1 class="text-center">Create Customer</h1>
+
+
+
+
+
+<form asp-action="CreateNewCustomer" asp-controller="Customer" method="post">
+
+    <div class="row mb-5">
+        <div class="">
+            <label asp-for="Username" class="form-label">User Name</label>
+        </div>
+
+        <div class="">
+            <input asp-for="Username" class="form-control" type="text" />
+        </div>
+
+        <div class="">
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="row mb-5">
+        <div class="">
+            <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+        </div>
+
+        <div class="">
+            <input asp-for="PhoneNumber" class="form-control" type="text" placeholder="123-123-1234"/>
+        </div>
+
+        <div class="">
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+
+
+
+    <div class="row mb-3">
+        <div class="col-6">
+            <button class="btn btn-primary" type="submit">Add New Customer</button>
+        </div>
+    </div>
+</form>
+

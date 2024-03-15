@@ -1,0 +1,87 @@
+﻿
+@model Appointment
+
+
+@{
+    ViewData["Title"] = "Create Appointment";
+}
+
+@* Calls in the scripts from the file _ValidationScriptsPartial and uses     @await RenderSectionAsync("Scripts", required: false)    from the _Layout *@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<h1 class="text-center">Create Appointment</h1>
+
+
+
+
+
+<form asp-action="CreateAppointment" asp-controller="Appointment" method="post">
+
+    <div class="row mb-5">
+        <div class="">
+            <label asp-for="AppointmentDate" class="form-label">Date of Appointment</label>
+        </div>
+
+        <div class="">
+            <input id="appointmentDateInput"  asp-for="AppointmentDate" class="form-control" type="datetime-local" placeholder="MM/dd/yyyy hh:00AM/PM" />
+        </div>
+
+        <div class="">
+            <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+        </div>
+    </div>
+
+
+
+@* ALLOWED FOR THE DATE TO GO 1 DAY AHEAD BY DEFAULT *@
+@*
+    <script>
+        // Get the current date and time
+        var currentDate = new Date();
+
+        // Add one day to the current date
+        currentDate.setDate(currentDate.getDate() + 1);
+
+        // Set minutes to zero
+        currentDate.setMinutes(0);
+
+        // Format the date as required by datetime-local input
+        var formattedDate = currentDate.toISOString().slice(0, 16);
+
+        // Set the value of the input field to one day ahead of the current date with zero minutes
+        document.getElementById("appointmentDateInput").value = formattedDate;
+    </script>
+*@
+
+
+
+
+
+    @* CUSTOMER *@
+    <div class="mb-5">
+        <label asp-for="CustomerId" class="form-label">Customer</label>
+
+        <!-- Using the asp-items tag helper to dynamically populate the drop down list with genres -->
+        <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.Customers">
+            <option value="">Select Customer</option>
+        </select>
+
+
+        <span class="text-danger" asp-validation-for="CustomerId"></span> @* Error Message *@
+
+    </div>
+    @* CUSTOMER *@
+
+
+
+    <div class="row mb-3">
+        <div class="col-6">
+            <button class="btn btn-primary" type="submit">Add Employee</button>
+        </div>
+    </div>
+</form>
+
